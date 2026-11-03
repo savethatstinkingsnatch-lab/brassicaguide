@@ -1,0 +1,1 @@
+import{i as e,n as t,r as n}from"./index-stJEHTr3.js";var r=e(n()),i=t();function a(){return(0,r.useEffect)(()=>{window.location.replace(`/download`)},[]),(0,i.jsx)(`p`,{className:`bg-cloth px-6 py-10 text-paper`,children:(0,i.jsx)(`a`,{className:`underline`,href:`/download`,children:`Continue to the download`})})}export{a as component};

@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, "Iowan Old Style", Palatino, serif;
+  --font-body: "Literata", Georgia, Palatino, "Palatino Linotype", serif;
+
+  --color-cloth: #1e2c22;
+  --color-cloth-deep: #152019;
+  --color-paper: #f3eee4;
+  --color-paper-deep: #e6dfd0;
+  --color-ink: #1c2418;
+  --color-muted: #5c6554;
+  --color-leaf: #2a4632;
+  --color-brass: #a67c3d;
+  --color-brass-deep: #8c672f;
+  --color-brass-ink: #241c0e;
+  --color-rule: #d5cbb6;
+
+  --shadow-sheet: 0 16px 40px rgb(0 0 0 / 0.28);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-cloth);
+    color: var(--color-ink);
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-brass-ink);
+  }
+}
+
+.drop::first-letter {
+  font-family: var(--font-display);
+  float: left;
+  font-size: 3.15rem;
+  line-height: 0.8;
+  padding-top: 0.2rem;
+  padding-right: 0.4rem;
+  color: var(--color-leaf);
+}
+
+.page-enter {
+  animation: page-in 240ms ease;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.press:active {
+  transform: scale(0.98);
+}
+
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+  }
+
+  .press:active {
+    transform: none;
+  }
+}

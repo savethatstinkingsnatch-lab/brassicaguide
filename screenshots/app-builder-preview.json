@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "The Brassica Book",
+      "hasCanvas": false,
+      "bodyTextLen": 389,
+      "bodyTextHash": "67f9c82675ab0c4b187e98564fd9bc8f8cd11ba3cdfeb6a45a367caefc3e31db",
+      "bodyTextPrefix": "The Brassica Book Front · 1 / 44 Contents A FIELD BOOK OF THE MU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "The Brassica Book",
+      "hasCanvas": false,
+      "bodyTextLen": 389,
+      "bodyTextHash": "67f9c82675ab0c4b187e98564fd9bc8f8cd11ba3cdfeb6a45a367caefc3e31db",
+      "bodyTextPrefix": "The Brassica Book Front · 1 / 44 Contents A FIELD BOOK OF THE MU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

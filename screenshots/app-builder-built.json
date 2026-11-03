@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "The Brassica Book",
+      "hasCanvas": false,
+      "bodyTextLen": 339,
+      "bodyTextHash": "8cf49f0a18c98d9b34ca85ffea44d0ade3414e053ee4461f391dba51b9690d83",
+      "bodyTextPrefix": "The Brassica Book Front · 1 / 44 Contents A FIELD BOOK OF THE MU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "The Brassica Book",
+      "hasCanvas": false,
+      "bodyTextLen": 339,
+      "bodyTextHash": "8cf49f0a18c98d9b34ca85ffea44d0ade3414e053ee4461f391dba51b9690d83",
+      "bodyTextPrefix": "The Brassica Book Front · 1 / 44 Contents A FIELD BOOK OF THE MU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: body text changed (389 -> 339 chars, hash mismatch)",
+    "mobile: body text changed (389 -> 339 chars, hash mismatch)"
+  ]
+}
