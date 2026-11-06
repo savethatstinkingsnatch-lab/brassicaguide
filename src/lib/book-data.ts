@@ -165,7 +165,8 @@ export const storageRows: StorageRow[] = [
   { group: "Roots and stems", name: "Wasabi rhizome", where: "Damp cloth, fridge", keeps: "1–2 weeks", freezer: "The fire does not survive" },
   { group: "Pantry", name: "Mustard seed, whole", where: "Cool, dark, sealed", keeps: "A year or more", freezer: "No need" },
   { group: "Pantry", name: "Ground mustard", where: "Sealed jar", keeps: "A few months before it fades", freezer: "No need" },
-  { group: "Pantry", name: "Canola or mustard oil", where: "Cool, dark. Do not refrigerate", keeps: "Several months. Smell it", freezer: "No" },
+  { group: "Pantry", name: "Canola oil", where: "Cool, dark. Do not refrigerate", keeps: "Several months. Smell it", freezer: "No" },
+  { group: "Pantry", name: "Mustard oil, only if the label says it is for food", where: "Cool and dark. Do not smoke it to make it safe", keeps: "Follow the label", freezer: "No" },
   { group: "Pantry", name: "Cooked leftovers", where: "Covered, refrigerated once cool", keeps: "3 days", freezer: "A month if packed cold" },
 ];
 
@@ -193,7 +194,7 @@ export const essays: Essay[] = [
     paragraphs: [
       "Most of the weekday brassicas are a single species. Broccoli, cauliflower, cabbage, kale, collards, Brussels sprouts, and kohlrabi are all *Brassica oleracea*. A wild cabbage still grows on the limestone coasts of western Europe. Gardeners, over centuries, selected different organs of that one plant until the organs became the vegetables.",
       "Learn the organ and the cooking gets easier. Leaves want either a hard raw massage or a long braise. Buds want high heat and a short stay. A curd wants to brown, then to be kept a little tender at the core. A swollen stem wants peeling. Nothing in this list wants to be boiled in a crowd until grey.",
-      "Then the family steps outside that one species. Bok choy, napa, turnips, broccoli rabe, and mizuna are *Brassica rapa*. Rutabaga and canola are *Brassica napus*, a meeting of cabbage and turnip. Mustard greens are *Brassica juncea*. Radish, arugula, watercress, horseradish, and wasabi are not even in the genus *Brassica*. They are still in the family. They are still sharp for the same reason. Capers are not. Capers are *Capparis*, a different story that only rhymes at the table.",
+      "Then the family steps outside that one species. Bok choy, napa, turnips, broccoli rabe, and mizuna are *Brassica rapa*. Rutabaga is *Brassica napus*, a meeting of cabbage and turnip. Canola in the United States is usually that same species, though some canola-quality varieties come from *Brassica rapa* or *Brassica juncea*. Mustard greens are *Brassica juncea*. The word mustard on a packet is not a species: check the botanical name. Radish, arugula, watercress, horseradish, and wasabi are not even in the genus *Brassica*. They are still in the family. They are still sharp for the same reason. Capers are not. Capers are *Capparis*, a different story that only rhymes at the table.",
     ],
     insert: "shapes",
   },
@@ -203,7 +204,7 @@ export const essays: Essay[] = [
     title: "Also on the table",
     paragraphs: [
       "Not every edible member arrives as a vegetable. Yellow mustard, the condiment, is ground seed: white mustard is *Sinapis alba*, brown mustard is the same species as mustard greens, *Brassica juncea*. Whole seed keeps a year in a dark jar. Ground mustard fades in a few months. Toast the seeds in a dry pan until they pop, and they belong in a slaw.",
-      "Canola oil is the oil of *Brassica napus*, bred so the harsh compounds stay low enough to fry with. Keep it cool and dark, not in the refrigerator, where it clouds. Smell it before you use the tail of the bottle. Mustard oil is stronger and, in some places, a cooking fat people heat until it smokes once to gentle it. Treat it as a seasoning if you are unsure.",
+      "Canola oil is usually pressed from *Brassica napus* in the United States, though some canola-quality varieties come from *Brassica rapa* or *Brassica juncea*. It was bred so the harsh compounds stay low enough to fry with. Keep it cool and dark, not in the refrigerator, where it clouds. Smell it before you use the tail of the bottle. Expressed mustard oil is not a cooking substitute. The FDA warns that it may contain high levels of erucic acid and may be detained as an unsafe food additive. Heating it until it smokes does not make it safe. Cook with it only if the label says it is for food and it meets U.S. requirements. Steam-distilled mustard oil, sold as a flavoring, is a different product.",
       "Two names cause trouble. Watercress is *Nasturtium officinale*. The garden flower called nasturtium is *Tropaeolum*, a different family, peppery in its own right and not in this book. Wasabi is *Eutrema japonicum*. The green paste in most tubes is horseradish, mustard, and color. Real wasabi is a rhizome you grate at the last minute. Both facts are in the plant pages, where they can sit next to the storage times.",
     ],
   },
@@ -265,8 +266,8 @@ export const plants: Plant[] = [
     imageAlt: "Watercolor of a whole cauliflower wrapped in pale green leaves",
     lede: "A cauliflower is not a flower yet. It is the plant’s decision to stop, eaten at the pause.",
     body: [
-      "The white curd is a mass of flower stalks that never got to become florets. Leaves left on will shield it from light and from bumps. Orange cultivars carry more beta-carotene. Purple ones carry anthocyanin, the same family of pigment as red cabbage. They store the same way. They all brown well.",
-      "The core is not waste. Slice it thin and it roasts as sweetly as the curd, sometimes better. The pale inner leaves are worth the pan. Outer leaves that are tough can be sliced and added earlier, the way you would treat a cabbage rib. Pulsed raw florets, sold as cauliflower rice, freeze in a thin layer for about a month and want cooking. They thaw into a wet disappointment if you meant to eat them raw.",
+      "The white curd is a dense cluster of immature flower buds. Leaves left on will shield it from light and from bumps. Orange cultivars carry more beta-carotene. Purple ones carry anthocyanin, the same family of pigment as red cabbage. They store the same way. They all brown well.",
+      "The core is not waste. Slice it thin and it roasts as sweetly as the curd, sometimes better. The pale inner leaves are worth the pan. Outer leaves that are tough can be sliced and added earlier, the way you would treat a cabbage rib. Pulsed raw florets, sold as cauliflower rice, can be frozen, but freezing them raw costs quality. Blanch three minutes, the time on the keeping table, then chill, dry, and freeze if you want the better-kept bag. Either way they want cooking. They thaw into a wet disappointment if you meant to eat them raw.",
     ],
     flavor: "Mild, nutty, a little sweet. Bitter only at the scorched edge, which is often the best edge.",
     storage:
@@ -553,7 +554,7 @@ export const plants: Plant[] = [
     lede: "You already eat this family when you do not think you are eating a vegetable.",
     body: [
       "White mustard seed is *Sinapis alba*, milder, used in the yellow condiment. Brown and black mustard seeds are hotter. Brown mustard is *Brassica juncea*, the same species as the greens. A teaspoon of seeds toasted until they pop will season a slaw, a pot of cabbage, or a spoon of oil you are about to pour over greens.",
-      "Canola is an oilseed *Brassica napus*, bred away from the harshness of older rapeseed so the oil could be a daily fat. It is neutral when fresh and painful when stale. Mustard oil is the opposite of neutral. In the kitchens that use it, it is often heated until it just smokes, which softens the bite, and then used to fry spices or greens. If that is not your kitchen, use a teaspoon as a seasoning and stop there.",
+      "Canola is an oilseed, usually *Brassica napus* in the United States, though canola-quality varieties can also come from *Brassica rapa* or *Brassica juncea*. It was bred away from the harshness of older rapeseed so the oil could be a daily fat. It is neutral when fresh and painful when stale. Do not cook with expressed mustard oil unless the bottle is clearly labeled for food use and meets U.S. requirements. The FDA warns that expressed mustard oil may contain high levels of erucic acid and may be detained as an unsafe food additive. Heating it until it smokes does not make it safe. Steam-distilled mustard oil, used as a flavoring, is not the same product.",
     ],
     flavor: "Whole seed: nutty, then hot. Ground mustard: hot, and fading with the months. Fresh oil: nearly blank. Tired oil: paint.",
     storage:
@@ -664,7 +665,7 @@ export const recipes: Recipe[] = [
     time: "20 minutes, plus a short rest",
     plantIds: ["cabbage", "pantry-seeds", "radish"],
     intro:
-      "Salt the cabbage before it meets the dressing so it stays crisp instead of weeping all over the bowl. Mustard seed, toasted, is the family checking in on itself.",
+      "Salt the cabbage, then drain the liquid the salt draws out, and dress what is left. Mustard seed, toasted, is the family checking in on itself.",
     ingredients: [
       "A quarter of a firm cabbage, sliced very thin",
       "1 apple, cut into matchsticks",
@@ -676,9 +677,10 @@ export const recipes: Recipe[] = [
       "Salt",
     ],
     steps: [
-      "Salt the cabbage and leave it in the bowl while you toast the mustard seeds in a dry pan until they pop.",
-      "Mix the vinegar, oil, honey, seeds, and a pinch more salt.",
-      "Toss with the cabbage, apple, and radish. Wait 15 minutes.",
+      "Salt the cabbage and leave it 10 minutes. Drain off the liquid. It is already seasoned.",
+      "Toast the mustard seeds in a dry pan until they pop.",
+      "Mix the vinegar, oil, honey, and seeds. Do not add more salt yet.",
+      "Toss with the drained cabbage, apple, and radish. Wait 15 minutes, then salt only if it needs it.",
     ],
     note: "It keeps a day in the fridge and gets softer, which is welcome beside a sandwich and less welcome if you wanted crackle.",
   },
@@ -978,11 +980,11 @@ const growing: Page = {
   toc: true,
   kind: "notes",
   items: [
-    "Cool-season crops: plant in early spring or late summer for fall. Heat makes them bolt (flower) and turn bitter. Kale, collards, cabbage, and Brussels sprouts handle frost and taste sweeter after it.",
+    "Cool-season crops: plant in early spring or late summer for fall. Brassicas grow best in cool weather. Heat can make some crops bolt or form poor heads; in biennial crops such as cabbage, prolonged cold followed by warmth can trigger flowering. Kale, collards, cabbage, and Brussels sprouts handle frost and taste sweeter after it.",
     "Start seed indoors 4 to 6 weeks before transplanting, or sow radishes, turnips, and mustard right in the garden.",
     "Rich soil, steady water, full sun.",
-    "Clubroot: a soil disease that swells roots and wilts plants. Don't grow any brassica in the same spot more than once every 3 to 4 years. Slightly sweet soil (pH about 7.2, using lime) helps.",
-    "Cabbage worms (green caterpillars) and flea beetles (tiny holes in leaves): cover plants with lightweight row cover from planting day, sealed at the edges. Pick off caterpillars.",
+    "Clubroot: a soil disease that swells roots and wilts plants. As prevention, don't grow any brassica in the same spot more than once every 3 to 4 years. That rotation will not clear clubroot already in the soil. The disease can remain for many years. If it is confirmed, keep cabbage-family crops out of that spot for at least four years, and often longer. Soil-test before you add lime. A sweeter pH can help, but do not assume every garden should be brought to 7.2.",
+    "Cabbage worms (green caterpillars) and flea beetles (tiny holes in leaves): cover plants with lightweight row cover from planting day, sealed at the edges. Pick off caterpillars. Take the cover off when the plants flower, unless insects can still reach the flowers another way. A sealed cover keeps pollinators out, and then there is no seed.",
     "Aphids: spray off with water.",
   ],
 };
@@ -994,11 +996,13 @@ const seedSaving: Page = {
   toc: true,
   kind: "notes",
   items: [
-    "Cabbage, broccoli, cauliflower, kale, collards, kohlrabi, and Brussels sprouts are all ONE species. They all cross with each other. Grow only one for seed each year.",
-    "Turnips, bok choy, napa cabbage, broccoli rabe, mizuna, and many mustards are another species. They cross with each other and with wild field mustard.",
+    "Cabbage, broccoli, cauliflower, kale, collards, kohlrabi, and Brussels sprouts are all ONE species, *Brassica oleracea*. They all cross with each other. Grow only one of them for seed each year.",
+    "These are *Brassica rapa*. They cross with each other and with wild field mustard: turnips, bok choy, napa cabbage, broccoli rabe, and mizuna.",
+    "Mustard is not one species. Mustard greens are usually *Brassica juncea*. White mustard seed is *Sinapis alba*. Other plants sold as mustard belong to still other species. They do not all cross with the *Brassica rapa* crops. Check the botanical name on the seed packet before you save seed from anything called mustard.",
     "Radishes cross only with other radishes.",
-    "Bees carry the pollen. Keep varieties of the same species half a mile to a mile apart, or grow only one.",
-    "Save seed from at least 20 plants. Brassicas need pollen from other plants, and a few plants make weak seed.",
+    "Canola in the United States is usually *Brassica napus*, but canola-quality varieties can also come from *Brassica rapa* and *Brassica juncea*. A canola plant can cross with the vegetable species named on its packet.",
+    "Bees carry the pollen. Half a mile to a mile between varieties of the same species is a home-garden approximation, not a distance that fits every crop or every seed-purity goal. If the seed has to stay true, grow only one variety of that species.",
+    "Twenty plants is a modest home-garden target, not a strong number for keeping a variety true over generations. USDA guidance for *Brassica* seed production recommends a minimum of 100 plants. These plants need pollen from other plants, and a few plants make weak seed.",
     "Most cabbage-family plants make seed in their SECOND year, after a winter of cold. Keep the best plants in the ground under mulch, or store them cold and replant in spring. Broccoli and radishes often flower the first year.",
     "Many broccoli, cabbage, cauliflower, and Brussels sprout varieties are F1 hybrids, and their seed will not grow true. Save seed only from packets marked open-pollinated (OP).",
     "Let pods turn tan and dry on the plant, cut the stalks, finish drying in a paper bag, then crack the pods.",
@@ -1013,7 +1017,7 @@ const staySafe: Page = {
   kind: "notes",
   boxed: true,
   items: [
-    "Thyroid: Brassicas are healthy. Only very large amounts of raw brassicas every day are a concern for people with thyroid problems. Cooking reduces it.",
+    "Thyroid: Reasonable amounts are not a concern for most people who get enough iodine. The worry is mainly when iodine is already low, or when someone eats very large amounts of raw brassicas every day. Cooking lowers the compounds. It does not make the vegetables risk-free for every thyroid condition.",
     "Sprouts: To grow sprouts to eat, buy seed sold for sprouting. Garden seed may be treated with chemicals. Rinse sprouts often and keep them cold.",
     "Wild mustard: Wild yellow-flowered mustards are edible only if you are 100% sure of the plant. Never eat a wild plant you cannot identify.",
     "Sauerkraut: discard any kraut that is pink, slimy, soft, moldy, or smells rotten.",
@@ -1032,10 +1036,10 @@ const startHere: Page = {
     "Plant in cool weather, spring or fall.",
     "Use row cover from day one to stop caterpillars and flea beetles.",
     "Water steadily and feed the soil with compost.",
-    "Harvest before heat makes them bolt.",
+    "Harvest while the weather is still cool. Heat can spoil heads. A long cold spell, then warmth, can make cabbage flower.",
     "Store cold and dry, away from apples.",
     "Make sauerkraut from extra cabbage.",
-    "Want seed? Grow one open-pollinated variety, keep 20 or more plants, and let them flower the next spring.",
+    "Want seed? Grow one open-pollinated variety, and lift the row cover when the plants flower so insects can reach them. Twenty plants is only a modest start. A population nearer 100 holds a variety better. Most of these plants flower the next spring.",
   ],
 };
 
