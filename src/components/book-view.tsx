@@ -1,13 +1,14 @@
 import { createContext, Fragment, useContext, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, List, X } from "lucide-react";
 import {
+  APP_NAME,
   BOOK_TITLE,
   PUBLISHER,
-  RIGHTS_EMAIL,
-  RIGHTS_MAILTO,
+  SERIES,
   YEAR,
   essayById,
   findPageIndex,
+  glossary,
   pages,
   plantById,
   recipeById,
@@ -95,7 +96,7 @@ function Cover() {
   const offline = useOffline();
   return (
     <div className="flex flex-col">
-      <p className="text-xs tracking-widest text-muted uppercase">A field book of the mustard family</p>
+      <p className="text-xs tracking-widest text-muted uppercase">{SERIES}</p>
       <h1 id="page-title" tabIndex={-1} className="mt-3 font-display text-4xl text-ink outline-none sm:text-5xl md:text-6xl">
         The Brassica Book
       </h1>
@@ -106,13 +107,12 @@ function Cover() {
         src="/art/cover.jpg"
         alt="Watercolor still life of cauliflower, broccoli, cabbage, radishes, and kale"
       />
-      <p className="font-display text-xl text-ink">{PUBLISHER}</p>
-      <p className="mt-1 text-muted">Publisher, {YEAR}</p>
+      <p className="font-display text-xl text-ink">by {PUBLISHER}</p>
       <p className="mt-6 max-w-prose">
         {offline
           ? "This is your offline copy. Open this file in a browser. It does not need a connection. "
           : ""}
-        Publishing rights are held by {PUBLISHER}.
+        This guide is free. Publishing rights are held by {PUBLISHER}.
       </p>
     </div>
   );
@@ -133,13 +133,7 @@ function Rights({ onJump }: { onJump: (id: string) => void }) {
             : ""}
           All publishing rights in this text are held by {PUBLISHER}. That means the right to print,
           sell, excerpt, translate, and adapt it. Reading it here is not permission to republish it.
-          Write first.
-        </p>
-        <p>
-          Contact:{" "}
-          <a className="break-all text-leaf underline decoration-rule underline-offset-4" href={RIGHTS_MAILTO}>
-            {RIGHTS_EMAIL}
-          </a>
+          Please ask {PUBLISHER} before you reprint any of it.
         </p>
       </div>
       <div className="mt-8 max-w-prose">
@@ -304,6 +298,7 @@ function PlantPage({ plantId, onJump }: { plantId: string; onJump: (id: string) 
           <span className="font-display text-ink">Flavor. </span>
           {plant.flavor}
         </p>
+        {plant.seeAlso ? <p className="font-display text-leaf">{plant.seeAlso}</p> : null}
       </div>
       <aside className="mt-8 max-w-prose bg-paper-deep px-5 py-5">
         <h2 className="font-display text-xl text-ink">In the larder</h2>
@@ -448,11 +443,73 @@ function Colophon() {
         </p>
         <p>
           Publisher and rights holder: {PUBLISHER}.{" "}
-          {offline
-            ? `This file is the offline copy. Write to ${RIGHTS_EMAIL} before you reprint any of it.`
-            : `Write to ${RIGHTS_EMAIL} before you reprint any of it.`}
+          {offline ? "This file is the offline copy. " : ""}
+          Please ask {PUBLISHER} before you reprint any of it.
         </p>
         <p>© {YEAR} {PUBLISHER}.</p>
+      </div>
+    </div>
+  );
+}
+
+function NotesPage({ page }: { page: Extract<Page, { kind: "notes" }> }) {
+  const ListTag = page.ordered ? "ol" : "ul";
+  const list = (
+    <ListTag className={`mt-6 max-w-prose space-y-3 ${page.ordered ? "list-decimal pl-5" : "list-disc pl-5"}`}>
+      {page.items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ListTag>
+  );
+  return (
+    <div>
+      <p className="text-xs tracking-widest text-muted uppercase">{page.part}</p>
+      <h1 id="page-title" tabIndex={-1} className="mt-3 font-display text-4xl text-ink outline-none">
+        {page.title}
+      </h1>
+      {page.intro ? <p className="drop mt-6 max-w-prose text-lg">{page.intro}</p> : null}
+      {page.boxed ? (
+        <aside className="mt-6 max-w-prose border-2 border-leaf bg-paper-deep px-5 py-5">{list}</aside>
+      ) : (
+        list
+      )}
+    </div>
+  );
+}
+
+function GlossaryPage() {
+  return (
+    <div>
+      <p className="text-xs tracking-widest text-muted uppercase">End</p>
+      <h1 id="page-title" tabIndex={-1} className="mt-3 font-display text-4xl text-ink outline-none">
+        Glossary
+      </h1>
+      <dl className="mt-8 max-w-prose">
+        {glossary.map((entry) => (
+          <div key={entry.term} className="border-b border-rule py-3">
+            <dt className="font-display text-lg text-ink">{entry.term}</dt>
+            <dd className="mt-1">{entry.meaning}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
+function AboutPage() {
+  return (
+    <div>
+      <p className="text-xs tracking-widest text-muted uppercase">End</p>
+      <h1 id="page-title" tabIndex={-1} className="mt-3 font-display text-4xl text-ink outline-none">
+        About and disclaimer
+      </h1>
+      <div className="mt-6 max-w-prose space-y-4">
+        <p className="drop">
+          This pocket guide is for learning. Check your local county extension office for advice in
+          your area. Never eat a wild plant you cannot identify for certain.
+        </p>
+        <p>{PUBLISHER} are not responsible for illness, injury, or crop loss.</p>
+        <p>Part of The Education Revolution pocket guide series.</p>
       </div>
     </div>
   );
@@ -474,6 +531,12 @@ export function PageBody({ page, onJump }: { page: Page; onJump: (id: string) =>
       return <StoragePage onJump={onJump} />;
     case "recipe":
       return <RecipePage recipeId={page.recipeId} onJump={onJump} />;
+    case "notes":
+      return <NotesPage page={page} />;
+    case "glossary":
+      return <GlossaryPage />;
+    case "about":
+      return <AboutPage />;
     case "colophon":
       return <Colophon />;
     default:
@@ -499,7 +562,7 @@ export function BookView({ offline = false }: { offline?: boolean }) {
   }, [storageKey]);
 
   useEffect(() => {
-    const title = index === 0 ? BOOK_TITLE : `${page.title} — ${BOOK_TITLE}`;
+    const title = index === 0 ? APP_NAME : `${page.title} — ${APP_NAME}`;
     document.title = title;
   }, [index, page.title]);
 
@@ -553,7 +616,7 @@ export function BookView({ offline = false }: { offline?: boolean }) {
       <header className="shrink-0 px-4 pt-3">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="truncate font-display text-sm text-paper">{BOOK_TITLE}</p>
+            <p className="truncate font-display text-sm text-paper">{APP_NAME}</p>
             <p className="truncate text-xs text-paper/70">
               {page.part} · {index + 1} / {pages.length}
             </p>
@@ -621,6 +684,9 @@ export function BookView({ offline = false }: { offline?: boolean }) {
             <ChevronRight className="size-5" aria-hidden="true" />
           </button>
         </div>
+        <p className="mx-auto mt-2 max-w-3xl pb-1 text-center text-xs text-paper/80">
+          Privacy: This guide does not collect your name, email, or any personal information.
+        </p>
       </footer>
 
       {menu ? (

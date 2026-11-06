@@ -1,11 +1,8 @@
 export const BOOK_TITLE = "The Brassica Book";
-export const PUBLISHER = "Jessica McIntosh";
-export const RIGHTS_EMAIL = "jessicamcintosh7777@gmail.com";
+export const APP_NAME = "Brassicas: The Brassica Book";
+export const SERIES = "The Education Revolution Pocket Guide, Volume 16";
+export const PUBLISHER = "Blue and the Awesome Dudes";
 export const YEAR = "2026";
-
-export const RIGHTS_MAILTO = `mailto:${RIGHTS_EMAIL}?subject=${encodeURIComponent(
-  "The Brassica Book — publishing rights",
-)}`;
 
 export type Plant = {
   id: string;
@@ -22,6 +19,7 @@ export type Plant = {
   flavor: string;
   storage: string;
   recipeIds: string[];
+  seeAlso?: string;
 };
 
 export type Recipe = {
@@ -60,10 +58,17 @@ export type Sign = { sign: string; doThis: string };
 
 type BasePage = { id: string; part: string; title: string; toc: boolean };
 export type Page =
-  | (BasePage & { kind: "cover" | "rights" | "contents" | "storage" | "colophon" })
+  | (BasePage & { kind: "cover" | "rights" | "contents" | "storage" | "colophon" | "glossary" | "about" })
   | (BasePage & { kind: "essay"; essayId: string })
   | (BasePage & { kind: "plant"; plantId: string })
-  | (BasePage & { kind: "recipe"; recipeId: string });
+  | (BasePage & { kind: "recipe"; recipeId: string })
+  | (BasePage & {
+      kind: "notes";
+      intro?: string;
+      ordered?: boolean;
+      boxed?: boolean;
+      items: string[];
+    });
 
 export const shapes: Shape[] = [
   {
@@ -220,7 +225,7 @@ export const essays: Essay[] = [
     title: "The freezer and the crock",
     paragraphs: [
       "To freeze, boil a pot of water and salt it properly. Cut even pieces. Prepare a bowl of ice water before you start, not after. Blanch for the time on the keeping table, counting from the moment the water returns to a boil. Chill until the pieces are cold through. Drain until they are nearly dry. Freeze in one layer, then pack into a bag with the air pressed out. Label the month. Use within a year. Leafy greens go from freezer to hot pan. Florets can thaw overnight in the fridge if you mean to roast them.",
-      "A cabbage you will not finish can become sauerkraut, which is not a vinegar pickle. Weigh the shredded cabbage. Add 2 grams of salt for every 100 grams of cabbage, which is 2 percent. Toss, wait until brine appears, and pack it into a clean jar until the brine covers the leaves. Weight the leaves under the brine. Set the lid on loosely. Keep the jar in a cool room, out of the sun, and start tasting on the third day. A week is a usual stop. It should smell sour and clean, like pickles.",
+      "A cabbage you will not finish can become sauerkraut, which is not a vinegar pickle. Weigh the shredded cabbage. Add 2 grams of salt for every 100 grams of cabbage, which is 2 percent. Toss, wait until brine appears, and pack it into a clean jar until the brine covers the leaves. Weight the leaves under the brine. Set the lid on loosely. Keep the jar at 70 to 75°F, out of the sun. Full sauerkraut takes about 3 to 4 weeks at that temperature, and 5 to 6 weeks at 60 to 65°F. You can start tasting after a week. Young kraut is fine to eat, but move it to the refrigerator when it tastes right. It should smell sour and clean, like pickles. Keep the cabbage under the brine the whole time.",
       "Fuzzy growth, a pink film, or a rotten smell means discard the jar. The same salt and the same rule work for napa, turnip, and radish. This is the ordinary home method, not a promise. If you are unsure, throw it out. Hunger is a worse guide than your nose.",
     ],
     jumps: [{ id: "keeping", label: "Blanching times" }],
@@ -327,6 +332,7 @@ export const plants: Plant[] = [
     storage:
       "Unwashed, in a bag with a dry paper towel, five to seven days. Wet leaves rot. Limp leaves can be shocked in ice water and dried completely. Yellow leaves are for the pot today, not the salad. Blanch two minutes to freeze, or blend with oil into a paste and freeze that.",
     recipeIds: ["kale-salad"],
+    seeAlso: "See also Volume 3: Greens.",
   },
   {
     id: "collards",
@@ -345,6 +351,7 @@ export const plants: Plant[] = [
     storage:
       "Same as kale: bag, towel, crisper, five to seven days. They take a harder freeze. Blanch three minutes, because the leaf is thicker. Cooked collards reheat better than they start, and they keep their three days in the fridge with dignity.",
     recipeIds: ["collards-pot"],
+    seeAlso: "See also Volume 3: Greens.",
   },
   {
     id: "brussels",
@@ -475,6 +482,7 @@ export const plants: Plant[] = [
     storage:
       "Tops off immediately. Turnip roots, two to three weeks in the crisper. Rutabaga, two to four weeks in the fridge, or longer in a cold pantry, especially if waxed. Tops, one or two days. Both roots blanch as cubes in two or three minutes and freeze well for mash and soup. They do not belong on the counter except for a day in a cool room.",
     recipeIds: ["root-mash"],
+    seeAlso: "See also Volume 12: Root Crops.",
   },
   {
     id: "radish",
@@ -495,6 +503,7 @@ export const plants: Plant[] = [
     storage:
       "Tops off, unwashed roots in a bag, one to two weeks for globe radishes, two to three for daikon. Tops, one or two days. They do not freeze into anything you will be glad to thaw. Pickle them. A quick vinegar pickle is bright in an hour and right for several days. Daikon salted for kimchi or sunomono keeps longer than the fresh root ever would.",
     recipeIds: ["radish-ways"],
+    seeAlso: "See also Volume 12: Root Crops.",
   },
   {
     id: "fire",
@@ -531,6 +540,7 @@ export const plants: Plant[] = [
     storage:
       "Arugula, two or three days, driest bag, coldest shelf. Watercress, two or three days in a jar of water. Mustard greens, mizuna, and tatsoi, three to five days with a towel in the bag. None of them want a wash before their day. None of them freeze as salad. Arugula can be pounded with oil and salt and frozen like a paste. Watercress and mustard want a soup or a braise, and then the freezer if you like.",
     recipeIds: ["green-soup"],
+    seeAlso: "See also Volume 3: Greens.",
   },
   {
     id: "pantry-seeds",
@@ -961,11 +971,99 @@ const essayPages: Page[] = essays.map((essay) => ({
 const familyEssays = essayPages.filter((page) => page.part === "The Family");
 const larderEssays = essayPages.filter((page) => page.part === "The Larder");
 
+const growing: Page = {
+  id: "growing",
+  part: "The Garden",
+  title: "Growing brassicas",
+  toc: true,
+  kind: "notes",
+  items: [
+    "Cool-season crops: plant in early spring or late summer for fall. Heat makes them bolt (flower) and turn bitter. Kale, collards, cabbage, and Brussels sprouts handle frost and taste sweeter after it.",
+    "Start seed indoors 4 to 6 weeks before transplanting, or sow radishes, turnips, and mustard right in the garden.",
+    "Rich soil, steady water, full sun.",
+    "Clubroot: a soil disease that swells roots and wilts plants. Don't grow any brassica in the same spot more than once every 3 to 4 years. Slightly sweet soil (pH about 7.2, using lime) helps.",
+    "Cabbage worms (green caterpillars) and flea beetles (tiny holes in leaves): cover plants with lightweight row cover from planting day, sealed at the edges. Pick off caterpillars.",
+    "Aphids: spray off with water.",
+  ],
+};
+
+const seedSaving: Page = {
+  id: "seed",
+  part: "The Garden",
+  title: "Saving brassica seed",
+  toc: true,
+  kind: "notes",
+  items: [
+    "Cabbage, broccoli, cauliflower, kale, collards, kohlrabi, and Brussels sprouts are all ONE species. They all cross with each other. Grow only one for seed each year.",
+    "Turnips, bok choy, napa cabbage, broccoli rabe, mizuna, and many mustards are another species. They cross with each other and with wild field mustard.",
+    "Radishes cross only with other radishes.",
+    "Bees carry the pollen. Keep varieties of the same species half a mile to a mile apart, or grow only one.",
+    "Save seed from at least 20 plants. Brassicas need pollen from other plants, and a few plants make weak seed.",
+    "Most cabbage-family plants make seed in their SECOND year, after a winter of cold. Keep the best plants in the ground under mulch, or store them cold and replant in spring. Broccoli and radishes often flower the first year.",
+    "Many broccoli, cabbage, cauliflower, and Brussels sprout varieties are F1 hybrids, and their seed will not grow true. Save seed only from packets marked open-pollinated (OP).",
+    "Let pods turn tan and dry on the plant, cut the stalks, finish drying in a paper bag, then crack the pods.",
+  ],
+};
+
+const staySafe: Page = {
+  id: "stay-safe",
+  part: "The Garden",
+  title: "Stay safe",
+  toc: true,
+  kind: "notes",
+  boxed: true,
+  items: [
+    "Thyroid: Brassicas are healthy. Only very large amounts of raw brassicas every day are a concern for people with thyroid problems. Cooking reduces it.",
+    "Sprouts: To grow sprouts to eat, buy seed sold for sprouting. Garden seed may be treated with chemicals. Rinse sprouts often and keep them cold.",
+    "Wild mustard: Wild yellow-flowered mustards are edible only if you are 100% sure of the plant. Never eat a wild plant you cannot identify.",
+    "Sauerkraut: discard any kraut that is pink, slimy, soft, moldy, or smells rotten.",
+  ],
+};
+
+const startHere: Page = {
+  id: "start",
+  part: "Front",
+  title: "Start here",
+  toc: true,
+  kind: "notes",
+  intro: "New to brassicas?",
+  ordered: true,
+  items: [
+    "Plant in cool weather, spring or fall.",
+    "Use row cover from day one to stop caterpillars and flea beetles.",
+    "Water steadily and feed the soil with compost.",
+    "Harvest before heat makes them bolt.",
+    "Store cold and dry, away from apples.",
+    "Make sauerkraut from extra cabbage.",
+    "Want seed? Grow one open-pollinated variety, keep 20 or more plants, and let them flower the next spring.",
+  ],
+};
+
+export const glossary: { term: string; meaning: string }[] = [
+  { term: "Brassica", meaning: "the cabbage family genus." },
+  { term: "Bolting", meaning: "sending up a flower stalk too early." },
+  { term: "Clubroot", meaning: "a soil disease that swells and kills roots." },
+  { term: "Row cover", meaning: "a light fabric laid over plants to keep insects off." },
+  { term: "Biennial", meaning: "makes seed in its second year." },
+  { term: "Vernalization", meaning: "the cold spell a plant needs before it will flower." },
+  { term: "F1 hybrid", meaning: "a cross. Saved seed won't grow true." },
+  { term: "Open-pollinated (OP)", meaning: "seed that grows true to its parent." },
+  { term: "Isolation", meaning: "keeping varieties apart so they don't cross." },
+  {
+    term: "Lacto-fermentation",
+    meaning: "preserving vegetables with salt and the good bacteria that make kraut sour.",
+  },
+];
+
 export const pages: Page[] = [
   { id: "cover", part: "Front", title: "Cover", toc: false, kind: "cover" },
   { id: "rights", part: "Front", title: "Publishing rights", toc: true, kind: "rights" },
   { id: "contents", part: "Front", title: "Contents", toc: false, kind: "contents" },
+  startHere,
   ...familyEssays,
+  growing,
+  seedSaving,
+  staySafe,
   ...plants.map(
     (plant): Page => ({
       id: plant.id,
@@ -989,6 +1087,8 @@ export const pages: Page[] = [
       recipeId: recipe.id,
     }),
   ),
+  { id: "glossary", part: "End", title: "Glossary", toc: true, kind: "glossary" },
+  { id: "about", part: "End", title: "About and disclaimer", toc: true, kind: "about" },
   { id: "colophon", part: "End", title: "Colophon", toc: true, kind: "colophon" },
 ];
 

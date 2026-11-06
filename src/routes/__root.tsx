@@ -3,7 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "The Brassica Book";
+import { APP_NAME } from "@/lib/book-data";
 
 export const Route = createRootRoute({
   head: () => ({
