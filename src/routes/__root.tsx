@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "A field book of cauliflower, broccoli, and the other edible plants of the mustard family, with how to store them and how to cook them.",
+          "Volume 16 of The Education Revolution, by Blue and the Awesome Dudes. A field book of cauliflower, broccoli, and the other edible plants of the mustard family, with how to store them and how to cook them.",
       },
       { name: "theme-color", content: "#1e2c22" },
     ],
